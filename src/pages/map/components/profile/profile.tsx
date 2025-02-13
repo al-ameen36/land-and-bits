@@ -1,64 +1,55 @@
-import { BiStar } from "react-icons/bi";
+import { useState } from "react";
 import styles from "./profile.module.scss";
 import avatar from "@/assets/placeholder-img.svg";
-import image1 from "@/assets/images/cabbage.jpg";
-import image2 from "@/assets/images/eggs.jpg";
-import image3 from "@/assets/images/chicken.jpg";
-import image4 from "@/assets/images/greens.jpg";
+import { useDispatch } from "react-redux";
+import { Product } from "../../../../types/products";
+import { setProduct } from "../../../../store/slices/app";
+import dummyUsers from "../../../../data/dummyUsers";
+import { Farmer } from "../../../../types/farmers";
 
 export function Profile() {
+  const dispatch = useDispatch();
+  const [farmer] = useState<Farmer>(dummyUsers[0]);
+
+  const handleProductClick = (product: Product) => {
+    dispatch(setProduct(product));
+  };
+
   return (
     <div className={styles.profile}>
       <div className={styles.header}>
         <div className="avatar">
           <div className="image">
-            <img src={avatar} alt="" />
+            <img src={avatar} alt="Avatar" />
           </div>
           <span className="active" />
         </div>
         <div className={styles.personal_info}>
-          <p>John Doe</p>
-          <p>
-            <BiStar />
-            <BiStar />
-            <BiStar />
-            <BiStar />
+          <p>{farmer.name}</p>
+          <p style={{ fontSize: ".9rem" }}>
+            Sells {farmer.products.length} products
           </p>
         </div>
       </div>
-
-      <div className={styles.tabs}>
+      {/* <div className={styles.tabs}>
         <button className={styles.active}>Products</button>
         <button>Reviews</button>
         <button>Transactions</button>
-      </div>
-
+      </div> */}
+      <div style={{ marginBlock: "2rem" }} /> {/* Temp */}
       <div className={styles.body}>
-        {/* <p className={styles.item_price}>&#8358;2000</p> */}
-        <div className={styles.item}>
-          <img src={image1} alt="" />
-          <div className={styles.description}>
-            <h3 className={styles.item_name}>Cabbage</h3>
+        {farmer.products.map((product, index) => (
+          <div
+            key={index}
+            className={styles.item}
+            onClick={() => handleProductClick(product)}
+          >
+            <img src={product.images[0]} alt={product.name} />
+            <div className={styles.description}>
+              <h3 className={styles.item_name}>{product.name}</h3>
+            </div>
           </div>
-        </div>
-        <div className={styles.item}>
-          <img src={image2} alt="" />
-          <div className={styles.description}>
-            <h3 className={styles.item_name}>eggs</h3>
-          </div>
-        </div>
-        <div className={styles.item}>
-          <img src={image3} alt="" />
-          <div className={styles.description}>
-            <h3 className={styles.item_name}>Chicken</h3>
-          </div>
-        </div>
-        <div className={styles.item}>
-          <img src={image4} alt="" />
-          <div className={styles.description}>
-            <h3 className={styles.item_name}>Carrots</h3>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
