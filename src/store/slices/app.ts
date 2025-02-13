@@ -26,7 +26,7 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setProduct } = appSlice.actions;
+export const { setProduct, setFarmer } = appSlice.actions;
 export const selectCurrentProduct = (state: RootState) => state.app.product;
 export const selectCurrentFarmer = (state: RootState) => state.app.farmer;
 export default appSlice.reducer;

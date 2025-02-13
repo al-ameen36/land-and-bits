@@ -1,7 +1,7 @@
 import { CgClose } from "react-icons/cg";
 import styles from "./sidebar.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { selectCurrentProduct, setProduct } from "../../../../store/slices/app";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectCurrentProduct, setProduct } from "../../store/slices/app";
 import { useEffect, useState } from "react";
 import { usePaystackPayment } from "react-paystack";
 import Loader from "../loader/loader";

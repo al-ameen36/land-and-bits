@@ -1,4 +1,7 @@
 import { Farmer } from "../types/farmers";
+import user1 from "@/assets/images/users/user1.jpg";
+import user2 from "@/assets/images/users/user2.jpg";
+import user3 from "@/assets/images/users/user3.jpg";
 import image1 from "@/assets/images/cabbage.jpg";
 import image2 from "@/assets/images/eggs.jpg";
 import image3 from "@/assets/images/greens.jpg";
@@ -9,6 +12,8 @@ const dummyUsers: Farmer[] = [
     id: 1,
     name: "Alice Johnson",
     email: "alice.johnson@example.com",
+    coords: [7.42968, 10.528251],
+    photo: user1,
     products: [
       {
         name: "Cabbage",
@@ -39,6 +44,8 @@ const dummyUsers: Farmer[] = [
     id: 2,
     name: "Bob Smith",
     email: "bob.smith@example.com",
+    coords: [7.421552, 10.527809],
+    photo: user2,
     products: [
       {
         name: "Chicken",
@@ -69,6 +76,8 @@ const dummyUsers: Farmer[] = [
     id: 3,
     name: "Charlie Brown",
     email: "charlie.brown@example.com",
+    coords: [7.426351, 10.526246],
+    photo: user3,
     products: [
       {
         name: "Apples",

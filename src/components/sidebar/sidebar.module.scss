@@ -9,7 +9,7 @@
   top: 0;
   transition: 0.3s;
   z-index: 1000;
-  width: 400px;
+  width: var(--sidebar-width);
 
   &.active {
     right: 0;

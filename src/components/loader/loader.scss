@@ -1,13 +1,13 @@
 .loader_wrapper {
   background-color: #fff;
   display: grid;
-  height: 100%;
-  left: 0;
+  height: calc(100% + 8rem);
+  right: 0;
   place-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 1001;
+  width: var(--sidebar-width);
+  z-index: 9999;
 }
 
 .container {

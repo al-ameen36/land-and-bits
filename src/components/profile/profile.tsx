@@ -1,23 +1,34 @@
-import { useState } from "react";
 import styles from "./profile.module.scss";
 import avatar from "@/assets/placeholder-img.svg";
 import { useDispatch } from "react-redux";
-import { Product } from "../../../../types/products";
-import { setProduct } from "../../../../store/slices/app";
-import dummyUsers from "../../../../data/dummyUsers";
-import { Farmer } from "../../../../types/farmers";
+import { Product } from "../../types/products";
+import {
+  selectCurrentFarmer,
+  setFarmer,
+  setProduct,
+} from "../../store/slices/app";
+import { useAppSelector } from "../../store/hooks";
+import { CgClose } from "react-icons/cg";
 
 export function Profile() {
   const dispatch = useDispatch();
-  const [farmer] = useState<Farmer>(dummyUsers[0]);
+  const farmer = useAppSelector(selectCurrentFarmer);
+  const classes = [styles.profile, farmer ? styles.active : ""].join(" ");
 
   const handleProductClick = (product: Product) => {
     dispatch(setProduct(product));
   };
 
+  const handleClose = () => {
+    dispatch(setFarmer(null));
+  };
+
   return (
-    <div className={styles.profile}>
+    <div className={classes}>
       <div className={styles.header}>
+        <button onClick={handleClose} className={styles.close_btn}>
+          <CgClose />
+        </button>
         <div className="avatar">
           <div className="image">
             <img src={avatar} alt="Avatar" />
@@ -25,9 +36,9 @@ export function Profile() {
           <span className="active" />
         </div>
         <div className={styles.personal_info}>
-          <p>{farmer.name}</p>
+          <p>{farmer?.name}</p>
           <p style={{ fontSize: ".9rem" }}>
-            Sells {farmer.products.length} products
+            Sells {farmer?.products.length} products
           </p>
         </div>
       </div>
@@ -38,7 +49,7 @@ export function Profile() {
       </div> */}
       <div style={{ marginBlock: "2rem" }} /> {/* Temp */}
       <div className={styles.body}>
-        {farmer.products.map((product, index) => (
+        {farmer?.products.map((product, index) => (
           <div
             key={index}
             className={styles.item}
