@@ -1,0 +1,41 @@
+:root {
+  --primary-color: steelblue;
+}
+
+.avatar {
+  --size: 70px;
+  position: relative;
+
+  .image {
+    border: 3px solid silver;
+    border-radius: 100%;
+    height: var(--size);
+    overflow: hidden;
+    position: relative;
+    width: var(--size);
+  }
+
+  img,
+  .active {
+    position: absolute;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .active {
+    --size: 15px;
+    --position: 4px;
+
+    background-color: green;
+    border-radius: 100%;
+    bottom: var(--position);
+    display: inline-block;
+    height: var(--size);
+    right: var(--position);
+    width: var(--size);
+  }
+}

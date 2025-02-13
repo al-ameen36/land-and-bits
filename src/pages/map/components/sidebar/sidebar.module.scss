@@ -1,0 +1,74 @@
+.sidebar {
+  background-color: #fff;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  padding: 2rem 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  width: 400px;
+}
+
+.header {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: transparent;
+      border: 0;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.active_thumbnail {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+  margin-bottom: 1rem;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.body {
+  display: grid;
+  gap: 1rem;
+}
+
+.thumbnails {
+  display: grid;
+  height: 80px;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 1fr);
+
+  & > div {
+    border: 2px solid silver;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+
+    .active {
+      border: 2px solid tomato;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
